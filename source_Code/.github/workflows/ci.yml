@@ -1,0 +1,33 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      EMBEDDING_MODEL: sentence-transformers/all-MiniLM-L6-v2
+      RERANKER_MODEL: cross-encoder/ms-marco-MiniLM-L-6-v2
+      OCR_ENABLED: "false"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install
+        run: |
+          pip install --index-url https://download.pytorch.org/whl/cpu torch
+          pip install -r requirements.txt
+      - name: Unit tests (parsing, search, agents with fake LLM, API)
+        run: pytest -q
+      - name: Index sample bids
+        run: python main.py index data/Bid1 data/Bid2
+      - name: Retrieval evaluation
+        run: python main.py eval
+      - uses: actions/upload-artifact@v4
+        with:
+          name: retrieval-eval
+          path: eval/results.md

@@ -1,0 +1,36 @@
+# Tested with Python 3.11 / 3.12. Exact tested versions: requirements-lock.txt
+# GPU: after installing this file, run scripts/enable_gpu.ps1 (see HOW_TO_RUN.md).
+
+# Core
+pydantic>=2.7,<3
+pydantic-settings>=2.3,<3
+python-dotenv>=1.0
+PyYAML>=6.0
+python-dateutil>=2.9
+numpy>=1.26
+
+# Ingestion
+PyMuPDF>=1.24,<2
+beautifulsoup4>=4.12
+lxml>=5.0
+easyocr>=1.7            # optional OCR for scanned pages (uses the GPU automatically)
+
+# Search
+torch>=2.2
+transformers>=4.41,<5
+sentence-transformers>=3.0,<6
+faiss-cpu>=1.8
+rank-bm25>=0.2.2
+
+# Agents / LLM
+langgraph>=1.0,<2
+openai>=1.40,<3         # OpenAI-compatible client (Groq, OpenAI, Ollama, vLLM ...)
+
+# API / UI
+fastapi>=0.110
+uvicorn>=0.29
+streamlit>=1.35
+
+# Tests
+pytest>=8.0
+httpx>=0.25

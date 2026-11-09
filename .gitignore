@@ -1,0 +1,8 @@
+Demo Video/DEMO VIDEO.mp4
+.venv/
+venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example

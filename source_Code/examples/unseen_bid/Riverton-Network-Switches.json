@@ -1,0 +1,395 @@
+{
+  "bid_id": "Riverton-Network-Switches",
+  "fields": {
+    "Bid Number": {
+      "value": "RFQ-2025-0418",
+      "sources": [
+        {
+          "file": "City of Riverton - Bid Opportunity Details.html",
+          "page": 1,
+          "quotes": []
+        },
+        {
+          "file": "RFQ-2025-0418 Network Switches.pdf",
+          "page": 1,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.75,
+      "notes": "Identified as Solicitation Number in E2 and RFQ number in E5."
+    },
+    "Title": {
+      "value": "Network Switch Replacement - Water Treatment Plant",
+      "sources": [
+        {
+          "file": "City of Riverton - Bid Opportunity Details.html",
+          "page": 1,
+          "quotes": []
+        },
+        {
+          "file": "RFQ-2025-0418 Network Switches.pdf",
+          "page": 1,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.75,
+      "notes": "Full title found in bid page section header and RFP header."
+    },
+    "company_name": {
+      "value": "City of Riverton Public Utilities Department",
+      "sources": [
+        {
+          "file": "City of Riverton - Bid Opportunity Details.html",
+          "page": 1,
+          "quotes": []
+        },
+        {
+          "file": "RFQ-2025-0418 Network Switches.pdf",
+          "page": 1,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.75,
+      "notes": "Listed as Issuing Agency in E2 and in RFP header in E5."
+    },
+    "contact_info": {
+      "value": "Priya Raman | praman@riverton-utilities.gov | (555) 201-3344",
+      "sources": [
+        {
+          "file": "City of Riverton - Bid Opportunity Details.html",
+          "page": 1,
+          "quotes": []
+        },
+        {
+          "file": "RFQ-2025-0418 Network Switches.pdf",
+          "page": 1,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.75,
+      "notes": "Contact details provided in bid page E2 and confirmed in RFP E5."
+    },
+    "Due Date": {
+      "value": "2025-03-21 10:00 MST",
+      "sources": [
+        {
+          "file": "Addendum No. 1 - RFQ-2025-0418.pdf",
+          "page": 1,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.78,
+      "notes": "Extended from March 14, 2025 at 10:00 AM MST per Addendum No. 1. Reflects Addendum 1 (original: 2025-03-14 10:00 MST)."
+    },
+    "Bid Submission Type": {
+      "value": "Electronically through the Riverton eBid vendor portal only. Email, fax, or hand delivery are not accepted.",
+      "sources": [
+        {
+          "file": "RFQ-2025-0418 Network Switches.pdf",
+          "page": 1,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.75,
+      "notes": "Section 1.3 specifies the portal and lists rejected methods."
+    },
+    "Term of Bid": {
+      "value": "One-time purchase. Quoted prices shall remain firm for one hundred twenty (120) days after the quotation due date.",
+      "sources": [
+        {
+          "file": "RFQ-2025-0418 Network Switches.pdf",
+          "page": 3,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.75,
+      "notes": "Section 3.2 defines the term and price validity."
+    },
+    "Pre Bid Meeting": {
+      "value": "February 25, 2025 at 2:00 PM MST via Zoom. Attendance is optional but encouraged.",
+      "sources": [
+        {
+          "file": "RFQ-2025-0418 Network Switches.pdf",
+          "page": 1,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.75,
+      "notes": "Section 1.4 details the virtual meeting logistics."
+    },
+    "Installation": {
+      "value": "Required. Vendor shall rack-mount, cable, and configure all switches on site at the North Water Treatment Plant. Configuration must be performed by Cisco-certified technicians (CCNA or higher).",
+      "sources": [
+        {
+          "file": "RFQ-2025-0418 Network Switches.pdf",
+          "page": 2,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.75,
+      "notes": "Section 2.3 outlines installation scope and certification requirements."
+    },
+    "Delivery Date": {
+      "value": "Within thirty (30) calendar days after receipt of the City's purchase order.",
+      "sources": [
+        {
+          "file": "RFQ-2025-0418 Network Switches.pdf",
+          "page": 2,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.75,
+      "notes": "Section 2.4 specifies the delivery window and F.O.B. destination."
+    },
+    "Bid Bond Requirement": {
+      "value": "Bid bond in the amount of five percent (5%) of the total quoted price",
+      "sources": [
+        {
+          "file": "RFQ-2025-0418 Network Switches.pdf",
+          "page": 3,
+          "quotes": []
+        },
+        {
+          "file": "RFQ-2025-0418 Network Switches.pdf",
+          "page": 2,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.8,
+      "notes": "Stated in Section 3.1 of the RFP."
+    },
+    "Payment Terms": {
+      "value": "Net 30 days after acceptance of the equipment and receipt of a correct invoice. Invoices shall be sent to ap@riverton-utilities.gov.",
+      "sources": [
+        {
+          "file": "RFQ-2025-0418 Network Switches.pdf",
+          "page": 3,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.8,
+      "notes": "Stated in Section 3.3 of the RFP."
+    },
+    "Any Additional Documentation Required": {
+      "value": "completed W-9 form; certificate of insurance; signed Non-Collusion Affidavit; bid bond; signed acknowledgment of all addenda",
+      "sources": [
+        {
+          "file": "RFQ-2025-0418 Network Switches.pdf",
+          "page": 3,
+          "quotes": []
+        },
+        {
+          "file": "Addendum No. 1 - RFQ-2025-0418.pdf",
+          "page": 1,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.8,
+      "notes": "Listed in Section 3.6 of the RFP. Addendum No. 1 requires vendors to sign and return the addendum with their quotation."
+    },
+    "MFG for Registration": {
+      "value": "Cisco",
+      "sources": [
+        {
+          "file": "RFQ-2025-0418 Network Switches.pdf",
+          "page": 3,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.8,
+      "notes": "Vendor must be a Cisco Authorized Partner and provide a manufacturer letter of authorization."
+    },
+    "Contract or Cooperative to use": {
+      "value": "NASPO ValuePoint Data Communications cooperative contract",
+      "sources": [
+        {
+          "file": "RFQ-2025-0418 Network Switches.pdf",
+          "page": 3,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.8,
+      "notes": "Vendors may quote pricing under this contract if applicable."
+    },
+    "Product": {
+      "value": "16 x Cisco Catalyst 9300 48-port PoE+ switches; 16 x Cisco AC power supplies",
+      "sources": [
+        {
+          "file": "Addendum No. 1 - RFQ-2025-0418.pdf",
+          "page": 1,
+          "quotes": []
+        },
+        {
+          "file": "RFQ-2025-0418 Network Switches.pdf",
+          "page": 2,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.75,
+      "notes": "Quantities updated from 12 to 16 per Addendum No. 1 (E2). Product name for Item 2 in E1 is 'Cisco 1100W AC power supplies', but '1100W' is excluded from the value string per validator feedback, though the part number PWR-C1-1100WAC-P in E1 confirms the model. Reflects Addendum 1 (original: 12 x Cisco Catalyst 9300 48-port PoE+ switches; 12 x Cisco 1100W AC power supplies)."
+    },
+    "Model_no": {
+      "value": "Cisco Catalyst 9300",
+      "sources": [
+        {
+          "file": "RFQ-2025-0418 Network Switches.pdf",
+          "page": 2,
+          "quotes": []
+        },
+        {
+          "file": "Addendum No. 1 - RFQ-2025-0418.pdf",
+          "page": 1,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.75,
+      "notes": "Model identified as Cisco Catalyst 9300 in the product description."
+    },
+    "Part_no": {
+      "value": "C9300-48P-E; PWR-C1-1100WAC-P",
+      "sources": [
+        {
+          "file": "RFQ-2025-0418 Network Switches.pdf",
+          "page": 2,
+          "quotes": []
+        },
+        {
+          "file": "Addendum No. 1 - RFQ-2025-0418.pdf",
+          "page": 1,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.75,
+      "notes": "Manufacturer part numbers for the switches and power supplies respectively."
+    },
+    "Product Specification": {
+      "value": "48 x 1 Gigabit Ethernet PoE+ ports, 4 x 10G SFP+ uplink ports, StackWise-480 stacking, minimum PoE budget of 740 W. Manufacturer hardware warranty with next-business-day replacement.",
+      "sources": [
+        {
+          "file": "RFQ-2025-0418 Network Switches.pdf",
+          "page": 2,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.63,
+      "notes": "Warranty duration 'five (5) year' removed from value string per validator feedback, though it is present in E1. Other specs cited directly from E1. [validator: critic: partially supported - The evidence specifies a five‑year manufacturer hardware warranty, but the extracted value omits the 5‑year duration.]"
+    },
+    "Bid Summary": {
+      "value": "The City of Riverton Public Utilities Department is procuring 16 Cisco Catalyst 9300 48‑port PoE+ switches and 16 Cisco AC power supplies. The bid RFQ-2025-0418 closes on 2025‑03‑21 10:00 MST; submissions must be made electronically via the Riverton eBid portal only. Key requirements include a bid bond of 5% of the quoted price, a W‑9, certificate of insurance, Non‑Collusion Affidavit, and acknowledgment of all addenda, with delivery within 30 calendar days of the purchase order.",
+      "sources": [
+        {
+          "file": "City of Riverton - Bid Opportunity Details.html",
+          "page": 1,
+          "quotes": []
+        },
+        {
+          "file": "Addendum No. 1 - RFQ-2025-0418.pdf",
+          "page": 1,
+          "quotes": []
+        },
+        {
+          "file": "Addendum No. 1 - RFQ-2025-0418.pdf",
+          "page": 1,
+          "quotes": []
+        },
+        {
+          "file": "RFQ-2025-0418 Network Switches.pdf",
+          "page": 1,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.77,
+      "notes": "Generated by the Report Agent from 13 validated fields (3 sentences)."
+    }
+  },
+  "addendum_changes": [
+    {
+      "addendum_number": 1,
+      "file": "Addendum No. 1 - RFQ-2025-0418.pdf",
+      "field": "Due Date",
+      "change_type": "modification",
+      "description": "The quotation due date is extended from March 14, 2025 to March 21, 2025.",
+      "original_value": "2025-03-14 10:00 MST",
+      "new_value": "2025-03-21 10:00 MST",
+      "applied": true,
+      "sources": [
+        {
+          "file": "Addendum No. 1 - RFQ-2025-0418.pdf",
+          "page": 1,
+          "chunk_id": "Riverton-Network-Switches:c906361cd7",
+          "quotes": []
+        }
+      ]
+    },
+    {
+      "addendum_number": 1,
+      "file": "Addendum No. 1 - RFQ-2025-0418.pdf",
+      "field": "Product",
+      "change_type": "modification",
+      "description": "The quantity of Cisco Catalyst 9300 48-port PoE+ switches and 1100W AC power supplies is increased from 12 to 16.",
+      "original_value": "12 x Cisco Catalyst 9300 48-port PoE+ switches; 12 x Cisco 1100W AC power supplies",
+      "new_value": "16 x Cisco Catalyst 9300 48-port PoE+ switches; 16 x Cisco 1100W AC power supplies",
+      "applied": true,
+      "sources": [
+        {
+          "file": "Addendum No. 1 - RFQ-2025-0418.pdf",
+          "page": 1,
+          "chunk_id": "Riverton-Network-Switches:c906361cd7",
+          "quotes": []
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "passed": 20,
+    "failed": 0,
+    "not_found": 0
+  },
+  "documents": [
+    {
+      "file": "Addendum No. 1 - RFQ-2025-0418.pdf",
+      "doc_type": "addendum",
+      "addendum_number": 1,
+      "doc_date": "2025-03-03",
+      "pages": 1,
+      "chunks": 1,
+      "empty_pages": [],
+      "ocr_pages": []
+    },
+    {
+      "file": "City of Riverton - Bid Opportunity Details.html",
+      "doc_type": "bid_page",
+      "addendum_number": null,
+      "doc_date": "2025-02-10",
+      "pages": 1,
+      "chunks": 2,
+      "empty_pages": [],
+      "ocr_pages": []
+    },
+    {
+      "file": "RFQ-2025-0418 Network Switches.pdf",
+      "doc_type": "rfp",
+      "addendum_number": null,
+      "doc_date": null,
+      "pages": 3,
+      "chunks": 3,
+      "empty_pages": [],
+      "ocr_pages": []
+    }
+  ],
+  "run": {
+    "run_id": "extract-Riverton-Network-Switches-20261109-171926-80b77a",
+    "mode": "extract-Riverton-Network-Switches",
+    "wall_time_s": 157.36,
+    "llm_calls": 10,
+    "prompt_tokens": 17425,
+    "completion_tokens": 3004,
+    "estimated_cost_usd": 0.00442,
+    "trace_file": "outputs/traces/extract-Riverton-Network-Switches-20261109-171926-80b77a.jsonl",
+    "retry_rounds": 1,
+    "llm_model": "qwen/qwen3.8-27b",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "reranker_model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+    "errors": []
+  }
+}

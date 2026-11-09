@@ -1,0 +1,366 @@
+{
+  "bid_id": "Bid2",
+  "fields": {
+    "Bid Number": {
+      "value": "BPM044557; #E20P4600040",
+      "sources": [
+        {
+          "file": "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html",
+          "page": 1,
+          "quotes": []
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 1,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.83,
+      "notes": "Solicitation Number BPM044557 from bid page; PORFP Number #E20P4600040 from RFP header."
+    },
+    "Title": {
+      "value": "Dell Laptops w/Extended Warranty",
+      "sources": [
+        {
+          "file": "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html",
+          "page": 1,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.83,
+      "notes": "Title listed on the bid portal page."
+    },
+    "company_name": {
+      "value": "State of Maryland Treasurer's Office",
+      "sources": [
+        {
+          "file": "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html",
+          "page": 1,
+          "quotes": []
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 2,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.83,
+      "notes": "Issuing Organization listed as State of Maryland Treasurer's Office; Agency/Division Name is State Treasurer's Office/ Information Technology."
+    },
+    "contact_info": {
+      "value": "Tamaira Hawkins | thawkins@treasurer.state.md.us | 410-260-7533; James Simpson | jsimpson@treasurer.state.md.us | 410-260-6063",
+      "sources": [
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 3,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.76,
+      "notes": "Includes Agency POC and Agency On-site Contact details."
+    },
+    "Due Date": {
+      "value": "2024-06-10 14:00 EDT",
+      "sources": [
+        {
+          "file": "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html",
+          "page": 1,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.76,
+      "notes": "Closing date listed on the bid page. No addendum found to override this date."
+    },
+    "Bid Submission Type": {
+      "value": "Electronic submission via eMaryland Marketplace Advantage (eMMA) e-Procurement system. Bids will not be accepted by email, fax, U.S. Mail, or hand delivery.",
+      "sources": [
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 1,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.91,
+      "notes": "Explicit instructions provided in Special Instructions section."
+    },
+    "Term of Bid": {
+      "value": "Proposals must be valid for at least 90 days after the set due date.",
+      "sources": [
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 2,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.76,
+      "notes": "Refers to the validity period of the proposal/bid, not the contract duration."
+    },
+    "Pre Bid Meeting": {
+      "value": null,
+      "sources": [],
+      "confidence": 0.88,
+      "notes": "Not found in documents"
+    },
+    "Installation": {
+      "value": "Not explicitly required as a separate service, but specifications include 'Factory Install' for CFI and 'Windows AutoPilot'.",
+      "sources": [
+        {
+          "file": "Dell_Laptop_Specs.pdf",
+          "page": 1,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.54,
+      "notes": "Specs list factory install and AutoPilot, implying setup is part of the product configuration rather than a post-delivery service. [validator: critic: partially supported - Evidence cites 'Factory Install' and 'Windows AutoPilot' but does not explicitly state installation is required as a separate service.]"
+    },
+    "Delivery Date": {
+      "value": "Within 45 days of Award",
+      "sources": [
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 2,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.76,
+      "notes": "Explicit delivery requirement stated in Security Requirements/General Instructions."
+    },
+    "Bid Bond Requirement": {
+      "value": null,
+      "sources": [],
+      "confidence": 0.88,
+      "notes": "Not found in documents"
+    },
+    "Payment Terms": {
+      "value": "Invoices must be emailed to STOaccountspayable@treasurer.state.md.us within 10 days of delivering equipment. Invoices must include contractor name, address, tax ID, phone, PORFP number, date, invoice number, and amount due. Proof of delivery (packing slip/confirmation) and serial numbers are required.",
+      "sources": [
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 2,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.73,
+      "notes": "Specific invoicing instructions and timeline provided in RFP."
+    },
+    "Any Additional Documentation Required": {
+      "value": "Mercury Affidavit; Letter of Authorization (LOA) from Manufacturer or Distributor (if requested); Contract Affidavit; Proof of delivery (packing slip or delivery confirmation) and equipment serial numbers",
+      "sources": [
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 2,
+          "quotes": []
+        },
+        {
+          "file": "Contract_Affidavit.pdf",
+          "page": 1,
+          "quotes": []
+        },
+        {
+          "file": "Contract_Affidavit.pdf",
+          "page": 3,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.72,
+      "notes": "Mercury Affidavit and LOA are explicitly required/mentioned in RFP. Contract Affidavit is provided as a form to be executed. Proof of delivery is required with invoice."
+    },
+    "MFG for Registration": {
+      "value": "Dell",
+      "sources": [
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 2,
+          "quotes": []
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 1,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.74,
+      "notes": "RFP states Master Contractor must be an authorized reseller for Dell and lists Dell as Manufacturer Name."
+    },
+    "Contract or Cooperative to use": {
+      "value": "Desktop, Laptop and Tablet 2015 Master Contract, 060B5400007",
+      "sources": [
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 1,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.73,
+      "notes": "Bid is limited to Master Contractors awarded under this specific master contract."
+    },
+    "Product": {
+      "value": "30 x Dell Latitude 5550; 30 x Dell Thunderbolt 4 Dock",
+      "sources": [
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 3,
+          "quotes": []
+        },
+        {
+          "file": "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html",
+          "page": 1,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.76,
+      "notes": "Quantities and product names listed in RFP table."
+    },
+    "Model_no": {
+      "value": "Dell Latitude 5550; WD22TB4",
+      "sources": [
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 3,
+          "quotes": []
+        },
+        {
+          "file": "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html",
+          "page": 1,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.76,
+      "notes": "Model numbers explicitly stated in the product description and model columns."
+    },
+    "Part_no": {
+      "value": "SI# CC7802; 210-BLYZ; 379-BFNZ; 619-ARSB; 658-BCSB; 338-CNRG; 338-CNRK; 321-BKTQ; 409-BCXY; 631-BBSQ; 370-BBTL; 400-BRFT; 391-BJHB; 583-BLNH; 555-BKQC; 555-BKLQ; 451-BDGX; 492-BDMN; 346-BKLV; 537-BBDO; 340-DMNY; 340-AGIK; 387-BBPC; 817-BBBB; 658-BFQB; 340-DMMK; 389-FGSN; 319-BBKK; 634-BRWG; 379-BDZB; 362-7806; 364-1846; 364-4107; 365-0257; 366-0135; 366-0141; 371-0941; 375-3088; 383-0464",
+      "sources": [
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 3,
+          "quotes": []
+        },
+        {
+          "file": "Dell_Laptop_Specs.pdf",
+          "page": 1,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.71,
+      "notes": "SI# CC7802 is the solicitation item number. The remaining codes are component SKUs from the detailed specification sheet for the Latitude 5550. No specific SKU provided for the dock in evidence."
+    },
+    "Product Specification": {
+      "value": "Dell Latitude 5550: Intel Core Ultra 5 125U (12 cores, 14 threads, up to 4.3 GHz), 16 GB DDR5 5600 MT/s RAM, 256 GB M.2 Gen 4 PCIe NVMe SSD, 15.6\" FHD 1920x1080 60Hz IPS Non-Touch AG 250 nit display, Intel Wi-Fi 6E AX211, Bluetooth 5.3, 3-cell 54 Wh battery, Windows 11 Pro, Microsoft Copilot ready, 3-year extended warranty. Dell Thunderbolt 4 Dock: WD22TB4.",
+      "sources": [
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 3,
+          "quotes": []
+        },
+        {
+          "file": "Dell_Laptop_Specs.pdf",
+          "page": 1,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.61,
+      "notes": "Specifications summarized from the detailed SKU list in E3 and warranty requirement in E9. Dock specs limited to model number as no further technical details provided in evidence. [validator: critic: partially supported - Evidence lists many specs but does not explicitly state the 3‑year extended warranty or all listed attributes; partial support.]"
+    },
+    "Bid Summary": {
+      "value": "The State of Maryland Treasurer's Office is procuring 30 Dell Latitude 5550 laptops and 30 Dell Thunderbolt 4 Docks under the Desktop, Laptop and Tablet 2015 Master Contract. Bids must be submitted electronically via the eMaryland Marketplace Advantage (eMMA) system by June 10, 2024, at 14:00 EDT, as other submission methods are not accepted. Proposals must remain valid for at least 90 days after the due date, with delivery required within 45 days of award. Key requirements include a Mercury Affidavit, a Letter of Authorization from the manufacturer or distributor, a Contract Affidavit, and proof of delivery with serial numbers.",
+      "sources": [
+        {
+          "file": "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html",
+          "page": 1,
+          "quotes": []
+        },
+        {
+          "file": "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html",
+          "page": 1,
+          "quotes": []
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 3,
+          "quotes": []
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 1,
+          "quotes": []
+        }
+      ],
+      "confidence": 0.78,
+      "notes": "Generated by the Report Agent from 11 validated fields (4 sentences)."
+    }
+  },
+  "addendum_changes": [],
+  "validation": {
+    "passed": 18,
+    "failed": 0,
+    "not_found": 2
+  },
+  "documents": [
+    {
+      "file": "Contract_Affidavit.pdf",
+      "doc_type": "affidavit",
+      "addendum_number": null,
+      "doc_date": null,
+      "pages": 3,
+      "chunks": 11,
+      "empty_pages": [],
+      "ocr_pages": []
+    },
+    {
+      "file": "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html",
+      "doc_type": "bid_page",
+      "addendum_number": null,
+      "doc_date": "2024-05-28",
+      "pages": 1,
+      "chunks": 7,
+      "empty_pages": [],
+      "ocr_pages": []
+    },
+    {
+      "file": "Dell_Laptop_Specs.pdf",
+      "doc_type": "specs",
+      "addendum_number": null,
+      "doc_date": null,
+      "pages": 3,
+      "chunks": 8,
+      "empty_pages": [],
+      "ocr_pages": []
+    },
+    {
+      "file": "Mercury_Affidavit.pdf",
+      "doc_type": "affidavit",
+      "addendum_number": null,
+      "doc_date": null,
+      "pages": 1,
+      "chunks": 3,
+      "empty_pages": [],
+      "ocr_pages": []
+    },
+    {
+      "file": "PORFP_-_Dell_Laptop_Final.pdf",
+      "doc_type": "rfp",
+      "addendum_number": null,
+      "doc_date": "2024-05-24",
+      "pages": 4,
+      "chunks": 11,
+      "empty_pages": [],
+      "ocr_pages": []
+    }
+  ],
+  "run": {
+    "run_id": "extract-Bid2-20261109-235103-c0daa0",
+    "mode": "extract-Bid2",
+    "wall_time_s": 493.94,
+    "llm_calls": 5,
+    "prompt_tokens": 17688,
+    "completion_tokens": 2705,
+    "estimated_cost_usd": 0.00428,
+    "trace_file": "D:\\emplay inc assosiate ai engineer\\rfp-intelligence-platform\\outputs\\traces\\extract-Bid2-20261109-235103-c0daa0.jsonl",
+    "retry_rounds": 0,
+    "llm_model": "qwen/qwen3.8-27b",
+    "embedding_model": "BAAI/bge-base-en-v1.5",
+    "reranker_model": "BAAI/bge-reranker-base",
+    "errors": []
+  }
+}

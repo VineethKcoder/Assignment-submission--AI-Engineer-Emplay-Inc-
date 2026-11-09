@@ -1,0 +1,28 @@
+# Procurement / RFP vocabulary used for query expansion.
+# If any term of a group appears in a query, the other terms of the group are
+# added to the keyword (BM25) query and used as extra dense queries.
+# Generic domain vocabulary only - nothing bid-specific.
+groups:
+  - [deadline, due date, submission deadline, closing date, proposal due, bid opening, solicitation due, response due]
+  - [bid bond, bid security, bid guarantee, surety bond, proposal guarantee, bond]
+  - [performance bond, payment bond]
+  - [pre-bid, pre bid, pre-proposal, prebid conference, pre-bid meeting, pre-proposal conference, site visit]
+  - [term, contract term, contract period, length of contract, initial term, renewal, extension]
+  - [payment terms, net 30, invoice, invoicing, payment, remittance]
+  - [delivery, ship, shipping, lead time, delivery date, delivered]
+  - [installation, deployment, imaging, setup, white glove, configuration, asset tagging, etching]
+  - [affidavit, certification, certificate, form, attestation, acknowledgment, w-9, w9]
+  - [insurance, certificate of insurance, liability coverage, workers compensation]
+  - [contact, procurement officer, buyer, point of contact, poc, purchasing agent, email, phone]
+  - [cooperative, co-op, interlocal, piggyback, purchasing alliance, master contract, state contract, consortium]
+  - [manufacturer, oem, authorized reseller, reseller, distributor, letter of authorization]
+  - [warranty, extended warranty, guarantee, repair, service coverage]
+  - [submission, submit, electronic submission, portal, sealed envelope, hard copy, emma, isupplier]
+  - [model, model number, model no, part number, sku, part no, product number]
+  - [specification, specifications, specs, technical requirements, minimum requirements, configuration]
+  - [quantity, qty, units, estimated quantities]
+  - [addendum, amendment, revision, change, modified, extended]
+  - [cpu, processor]
+  - [ram, memory]
+  - [storage, ssd, hard drive, nvme]
+  - [display, screen, monitor]

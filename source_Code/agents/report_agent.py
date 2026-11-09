@@ -1,0 +1,151 @@
+"""Q&A / Report Agent - report half.
+
+Produces the final per-bid JSON record (value + sources + confidence + notes
+per field, addendum change log, validation counts), generates the Bid Summary
+from the validated fields, and writes a human-readable Markdown summary.
+"""
+
+from __future__ import annotations
+
+import json
+import logging
+import re
+from datetime import datetime, timezone
+from pathlib import Path
+
+from agents.fields import FieldConfig
+from agents.schemas import NOT_FOUND, AddendumChange, BidRecord, FieldValue, LLMSummary, Source, ValidationReport
+from agents.services import Services
+from agents.validator_agent import ValidatorAgent
+from core.llm import LLMError
+from core.tracing import Span
+
+logger = logging.getLogger("rfp.agents.report")
+
+SUMMARY_SYSTEM = """You are the Report Agent of an RFP intelligence system. Write a concise 3-6 sentence summary
+of the bid for a sales team, using ONLY the extracted field values given (do not add facts). Mention what is
+being procured, the issuing organization, the final due date (after addenda), how to submit, and the most
+important requirements. Return JSON: {"summary": "..."}"""
+
+_SUMMARY_FIELDS = ["Title", "Bid Number", "company_name", "Product", "Due Date", "Bid Submission Type",
+                   "Term of Bid", "Pre Bid Meeting", "Delivery Date", "Bid Bond Requirement",
+                   "Any Additional Documentation Required", "Contract or Cooperative to use", "MFG for Registration"]
+
+
+class ReportAgent:
+    name = "report_agent"
+
+    def __init__(self, services: Services):
+        self.s = services
+
+    @staticmethod
+    def finalize_fields(drafts: dict[str, FieldValue], report: ValidationReport, cfg: FieldConfig) -> dict[str, FieldValue]:
+        """Apply guardrails after the retry budget is spent and compute confidences."""
+        out: dict[str, FieldValue] = {}
+        for spec in cfg.extractable:
+            fv = drafts.get(spec.name, FieldValue(notes=NOT_FOUND)).model_copy(deep=True)
+            v = report.results.get(spec.name)
+            unsupported = v is not None and v.status == "failed" and any(
+                "citation" in i or "not supported" in i or "do not appear" in i for i in v.issues
+            )
+            if fv.value is not None and unsupported:
+                # Guardrail: never ship an unverifiable value - fall back to "not found"
+                fv.notes = f"{NOT_FOUND} (draft value '{fv.value[:80]}' rejected by validator: {v.issues[0][:120]})"
+                fv.value, fv.sources, fv.status = None, [], "not_found"
+                v.status, v.issues = "not_found", v.issues
+            elif fv.value is None:
+                fv.status = "not_found"
+                if not fv.notes:
+                    fv.notes = NOT_FOUND
+                elif NOT_FOUND.lower() not in fv.notes.lower():
+                    fv.notes = f"{NOT_FOUND}. {fv.notes}"
+            elif v is not None and v.status == "failed":
+                fv.status = "failed"
+                fv.notes = (fv.notes + " " if fv.notes else "") + f"[validation: {'; '.join(v.issues)[:200]}]"
+            elif v is not None and v.issues:
+                fv.notes = (fv.notes + " " if fv.notes else "") + f"[validator: {'; '.join(v.issues)[:200]}]"
+            # dedupe sources
+            seen, srcs = set(), []
+            for s in fv.sources:
+                key = (s.file, s.page)
+                if key not in seen:
+                    seen.add(key)
+                    srcs.append(Source(file=s.file, page=s.page))
+            fv.sources = srcs
+            fv.confidence = ValidatorAgent.confidence(fv, v)
+            out[spec.name] = fv
+        return out
+
+    def bid_summary(self, bid_id: str, fields: dict[str, FieldValue], span: Span | None = None) -> FieldValue:
+        known = {n: fields[n].value for n in _SUMMARY_FIELDS if n in fields and fields[n].value}
+        if len(known) < 2:
+            return FieldValue(value=None, status="not_found", notes=f"{NOT_FOUND} (too few fields to summarise)", confidence=0.5)
+        user = f"Bid: {bid_id}\n" + "\n".join(f"- {k}: {v[:300]}" for k, v in known.items())
+        sources: list[Source] = []
+        for n in ("Title", "Due Date", "Product", "Bid Submission Type"):
+            if n in fields:
+                sources.extend(fields[n].sources[:1])
+        try:
+            out = self.s.llm.chat_json(SUMMARY_SYSTEM, user, LLMSummary, span=span, max_tokens=700)
+            text = re.sub(r"\s+", " ", out.summary).strip()
+        except LLMError as exc:
+            logger.warning("summary generation failed: %s", exc)
+            text = " ".join(f"{k}: {v}." for k, v in list(known.items())[:5])
+        n_sent = len(re.findall(r"[.!?](\s|$)", text))
+        confs = [fields[n].confidence for n in known if fields[n].confidence]
+        return FieldValue(
+            value=text, sources=sources, status="generated",
+            confidence=round(min(0.95, sum(confs) / len(confs)) if confs else 0.6, 2),
+            notes=f"Generated by the Report Agent from {len(known)} validated fields ({n_sent} sentences).",
+        )
+
+    def build_record(self, bid_id: str, fields: dict[str, FieldValue], changes: list[AddendumChange],
+                     report: ValidationReport, documents: list[dict], run: dict, cfg: FieldConfig) -> BidRecord:
+        ordered = {}
+        for spec in cfg.fields.values():
+            fv = fields.get(spec.name) or FieldValue(notes=NOT_FOUND)
+            ordered[spec.name] = fv.public()
+        counts = report.counts
+        return BidRecord(
+            bid_id=bid_id,
+            fields=ordered,
+            addendum_changes=[c.model_dump(exclude={"evidence"}, exclude_none=True) for c in changes
+                              if c.change_type != "error"],
+            validation=counts,
+            documents=documents,
+            run=run,
+        )
+
+    def write(self, record: BidRecord) -> dict[str, str]:
+        out_dir = self.s.settings.path(self.s.settings.output_dir)
+        out_dir.mkdir(parents=True, exist_ok=True)
+        jpath = out_dir / f"{record.bid_id}.json"
+        jpath.write_text(json.dumps(record.model_dump(), indent=2, ensure_ascii=False), encoding="utf-8")
+        mpath = out_dir / f"{record.bid_id}_summary.md"
+        mpath.write_text(self.to_markdown(record), encoding="utf-8")
+        return {"json": str(jpath), "markdown": str(mpath)}
+
+    @staticmethod
+    def to_markdown(record: BidRecord) -> str:
+        f = record.fields
+        lines = [f"# Bid summary - {record.bid_id}", ""]
+        summary = (f.get("Bid Summary") or {}).get("value")
+        if summary:
+            lines += [summary, ""]
+        v = record.validation
+        lines += [f"Validation: {v.get('passed', 0)} passed, {v.get('failed', 0)} failed, "
+                  f"{v.get('not_found', 0)} not found. Generated {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC.", ""]
+        lines += ["| Field | Value | Sources | Conf. |", "|---|---|---|---|"]
+        for name, fv in f.items():
+            if name == "Bid Summary":
+                continue
+            val = (fv.get("value") or f"_{fv.get('notes') or NOT_FOUND}_").replace("|", "/").replace("\n", " ")
+            src = "; ".join(f"{s['file']} p.{s['page']}" for s in fv.get("sources", []))
+            lines.append(f"| {name} | {val[:400]} | {src[:200]} | {fv.get('confidence', 0):.2f} |")
+        if record.addendum_changes:
+            lines += ["", "## Addendum changes", ""]
+            for c in record.addendum_changes:
+                tgt = f" -> **{c['field']}**" if c.get("field") else ""
+                nv = f" New value: {c['new_value']}." if c.get("new_value") else ""
+                lines.append(f"- Addendum {c.get('addendum_number')} ({c['change_type']}){tgt}: {c['description']}{nv}")
+        return "\n".join(lines) + "\n"

@@ -1,0 +1,12 @@
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.cache/
+logs/
+index_store/
+.venv/
+venv/
+*.egg-info/
+outputs/traces/*.jsonl
+!outputs/traces/example_trace_*.jsonl

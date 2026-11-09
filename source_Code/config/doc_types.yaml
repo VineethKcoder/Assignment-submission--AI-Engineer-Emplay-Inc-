@@ -1,0 +1,26 @@
+# Document-type classification rules (generic, not tied to any bid).
+# Rules are evaluated in order; the first rule whose filename OR first-page
+# text pattern matches wins. Patterns are case-insensitive regular expressions.
+# HTML files are always classified as `bid_page` (portal page).
+rules:
+  - doc_type: addendum
+    filename: ['addend', 'amendment', '\bamend\b', 'erratum', 'errata']
+    first_page: ['^\s*(addendum|amendment)\s*(no\.?|number|#)?\s*\d+', '^\s*(addendum|amendment)\s*$']
+  - doc_type: affidavit
+    filename: ['affidavit', 'affirmation', 'attestation', 'certification', 'certificate', 'w-?9', 'non[-_ ]?collusion']
+    first_page: ['^\s*[\w\s]{0,40}affidavit\b', 'hereby affirm', 'duly authorized representative']
+  - doc_type: specs
+    filename: ['spec', 'datasheet', 'data[-_ ]sheet', 'configuration', 'quote', 'bom\b', 'technical']
+    first_page: ['^\s*(technical\s+)?specifications?\s*$', '^\s*sku\s*$']
+  - doc_type: form
+    filename: ['form', 'pricing', 'price[-_ ]sheet', 'worksheet', 'questionnaire', 'attachment', 'exhibit']
+    first_page: []
+  - doc_type: rfp
+    filename: ['rfp', 'rfq', 'rfi', 'ifb', 'itb', 'porfp', 'solicitation', 'bid', 'proposal', 'tender', 'final', 'invitation']
+    first_page: ['request\s+for\s+(proposal|quot|bid|information)', 'invitation\s+(to|for)\s+bid', 'solicitation']
+default: rfp
+
+# Regex used to pull the addendum number from the filename or first page.
+addendum_number_patterns:
+  - '(?:addendum|amendment)\s*(?:no\.?|number|#)?\s*(\d+)'
+  - '(?:addendum|amendment)[-_ ]*(\d+)'

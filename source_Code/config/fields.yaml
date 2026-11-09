@@ -1,0 +1,155 @@
+# Structured fields extracted for every bid.
+# - group: which specialist extraction agent owns the field (run in parallel)
+# - queries: search queries the Retrieval Agent issues (generic procurement wording)
+# - format: output format hint given to the extractor and checked by the validator
+# - addendum_sensitive: also search addendum documents explicitly (values often change there)
+# - evidence_k: evidence passages kept for this field (default: EVIDENCE_PER_FIELD)
+# - generated: produced by the Report Agent from the other fields (not extracted)
+
+groups:
+  identity:
+    agent: Identity & Contacts Specialist
+    focus: "Official identifiers, titles, issuing organization and procurement contacts. Prefer the portal bid page and the RFP cover/header pages."
+  dates_logistics:
+    agent: Dates & Logistics Specialist
+    focus: "Deadlines, meetings, delivery, submission method, installation services and contract term. Dates must reflect the LATEST addendum."
+  commercial_legal:
+    agent: Commercial & Legal Specialist
+    focus: "Bonds, payment and invoicing terms, required forms/affidavits/certificates/insurance, manufacturer authorization and cooperative contract vehicles."
+  product_specs:
+    agent: Product & Specs Specialist
+    focus: "What is being bought: product names, quantities, model numbers, part/SKU numbers and key technical specifications."
+
+fields:
+  - name: Bid Number
+    group: identity
+    description: Official solicitation / RFP identifier (e.g. "RFP-2024-017", "IFB 25-0312"). Use numbers labelled Solicitation Number, RFP/RFQ/IFB No., PORFP Number, Bid No. or Project Number; list all of them (primary first, semicolon-separated). Exclude portal-internal "Reference Number" ids.
+    queries: ["solicitation number RFP number bid number", "PORFP number project number", "request for proposal number"]
+    format: text
+    evidence_k: 4
+
+  - name: Title
+    group: identity
+    description: Full title of the bid or RFP.
+    queries: ["title of the solicitation request for proposal", "bid information title"]
+    format: text
+
+  - name: company_name
+    group: identity
+    description: Issuing organization / agency name (the buyer, not the vendor).
+    queries: ["issuing organization agency name", "district department purchasing agency"]
+    format: text
+
+  - name: contact_info
+    group: identity
+    description: "Procurement contact: name, email, phone (format: Name | email | phone). Include every procurement contact found."
+    queries: ["procurement contact buyer name email phone", "buyer email", "point of contact procurement officer", "questions must be submitted to email"]
+    format: text
+    evidence_k: 5
+
+  - name: Due Date
+    group: dates_logistics
+    description: Final submission deadline including time and time zone. MUST reflect any addendum that changes/extends it.
+    queries: ["proposal due date and time submission deadline", "closing date solicitation due", "new due date extended"]
+    format: "YYYY-MM-DD HH:MM TZ"
+    addendum_sensitive: true
+    evidence_k: 4
+
+  - name: Bid Submission Type
+    group: dates_logistics
+    description: How the bid is submitted (electronic portal name, sealed paper/hard copy, email, etc.) and what is NOT accepted.
+    queries: ["how to submit proposal electronic submission portal", "sealed envelope hard copy manual submission", "responses will only be accepted through"]
+    format: text
+
+  - name: Term of Bid
+    group: dates_logistics
+    description: Contract duration and any renewal / extension options.
+    queries: ["term of contract initial term renewal options", "length of contract years extension"]
+    format: text
+    addendum_sensitive: true
+
+  - name: Pre Bid Meeting
+    group: dates_logistics
+    description: Pre-bid / pre-proposal meeting date, time, location/format and whether attendance is mandatory, or "None" if the documents state there is none.
+    queries: ["pre-proposal meeting pre-bid conference date time", "pre-bid meeting mandatory attendance location"]
+    format: text
+    addendum_sensitive: true
+
+  - name: Installation
+    group: dates_logistics
+    description: Whether installation / deployment / imaging / setup services are required, and what they include.
+    queries: ["installation deployment services required", "imaging software installation asset tagging white glove", "setup configuration autopilot"]
+    format: text
+    addendum_sensitive: true
+
+  - name: Delivery Date
+    group: dates_logistics
+    description: Required delivery date or delivery window after award / purchase order (e.g. "within 60 days of award"). Prefer explicit delivery requirements; do not use the proposal due date or a generic per-line "due date" column as the delivery date.
+    queries: ["delivery within days of award", "delivery date shipping lead time ship date", "when do you need these delivered"]
+    format: text
+    addendum_sensitive: true
+
+  - name: Bid Bond Requirement
+    group: commercial_legal
+    description: Required bid bond / bid security / proposal guarantee with amount or percentage, or "Not required" ONLY if the documents explicitly say so. If bonds are only mentioned generically without a requirement, say what is stated.
+    queries: ["bid bond bid security proposal guarantee amount percent", "insurance and bonds requirements", "performance bond surety"]
+    format: text
+
+  - name: Payment Terms
+    group: commercial_legal
+    description: Payment terms the buyer commits to (e.g. Net 30) and invoicing conditions/instructions set by the buyer. Ignore vendor quote boilerplate such as financing or credit terms.
+    queries: ["invoicing instructions invoices shall be submitted", "payment terms net days", "payment will be made upon receipt of invoice"]
+    format: text
+
+  - name: Any Additional Documentation Required
+    group: commercial_legal
+    description: All affidavits, forms, certificates, insurance certificates, W-9, signed addenda acknowledgements, references, etc. that bidders must submit. Return a semicolon-separated list.
+    queries: ["required forms affidavits certificates must be submitted with proposal", "affidavit must provide", "certificate of insurance certificate of interested parties disclosure form", "acknowledge and return addendum with proposal", "references certifications attachments required"]
+    format: list
+    evidence_k: 6
+    addendum_sensitive: true
+
+  - name: MFG for Registration
+    group: commercial_legal
+    description: Manufacturer(s) the bidder must be registered / authorized with (authorized reseller, factory-authorized, letter of authorization), or the general OEM authorization requirement.
+    queries: ["authorized reseller manufacturer letter of authorization", "factory-authorized OEM manufacturer certification", "manufacturer name"]
+    format: text
+
+  - name: Contract or Cooperative to use
+    group: commercial_legal
+    description: Referenced cooperative purchasing agreement / master contract / state contract vehicle, if any.
+    queries: ["cooperative purchasing interlocal agreement", "master contract state contract vehicle", "piggyback contract purchasing alliance"]
+    format: text
+
+  - name: Product
+    group: product_specs
+    description: 'Product name(s) / device categories requested and quantities (format "<qty> x <product>"; use estimated quantities if that is all that is given).'
+    queries: ["product name description quantity", "line item target quantity unit price", "devices requested laptops desktops tablets monitors", "qty model product description"]
+    format: list
+    evidence_k: 5
+
+  - name: Model_no
+    group: product_specs
+    description: Model number(s) of the requested product(s) (e.g. "ThinkPad T14 Gen 5", "OptiPlex 7020"). Use the product's model name/number, not solicitation item numbers (SI#), line numbers or component SKUs (those belong in Part_no). Only models explicitly requested/quoted - never invent.
+    queries: ["model number model #", "make and model of the device"]
+    format: list
+
+  - name: Part_no
+    group: product_specs
+    description: Part / SKU / manufacturer part number(s) of the requested product(s) - the codes themselves (e.g. "21MC0012US", "SI# 4471-B", "A2Z-118"), never descriptions. If a quote lists many component SKUs, give the base/system SKU and solicitation item numbers first, then the remaining SKUs. Semicolon-separated.
+    queries: ["SKU part number", "SI# part no product number"]
+    format: list
+    evidence_k: 4
+
+  - name: Product Specification
+    group: product_specs
+    description: Key technical specifications (CPU, RAM, storage, display, OS, battery, ports, warranty, etc.). Summarize per product/tier when there are several.
+    queries: ["minimum requirements processor memory storage display", "technical specifications CPU RAM SSD screen", "warranty years minimum requirement"]
+    format: text
+    evidence_k: 6
+
+  - name: Bid Summary
+    group: report
+    description: A concise 3-6 sentence summary of the bid generated from the extracted fields.
+    generated: true
+    format: text
